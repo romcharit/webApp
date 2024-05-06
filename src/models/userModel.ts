@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export interface IUser {
+  //Fields: ID, username, email, password (hashed), profile picture, date joined
   _id: string;
   email: string;
   password: string;

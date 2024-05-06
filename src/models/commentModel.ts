@@ -1,17 +1,14 @@
 import mongoose from "mongoose";
 
 export interface IComment {
+  //Fields: ID, content, date posted, user ID (foreign key), 
+  //cocktail ID (foreign key)
   _id: string;
-  title: string;
   message: string;
   owner: string;
 }
 
 const CommentSchema = new mongoose.Schema<IComment>({
-  title: {
-    type: String,
-    required: true,
-  },
   message: {
     type: String,
     required: true,
