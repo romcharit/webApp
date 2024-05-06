@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 const app = express();
-import userRouter from "./src/routes/userRoute";
+import userRoute from "./routes/userRoute";
+import authRoute from "./routes/authRoute";
 
 //test
 import env from "dotenv";
@@ -15,10 +16,12 @@ const init = () => {
     db.on("error", (error) => console.error(error));
     db.once("open", () => console.log("connected to database"));
     mongoose.connect(process.env.DATABASE_URL).then(() => {
-
       app.use(bodyParser.urlencoded({ extended: true }));
-      app.use(bodyParser.json());    
-      app.use("/user",userRouter)
+      app.use(bodyParser.json());  
+
+      app.use("/user",userRoute);
+      app.use("/auth",authRoute);
+
 
       resolve(app);
     });
